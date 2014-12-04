@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<package name="action" namespace="/" extends="struts-default" >
+	
+	<!-- 查询病人 -->
+	<action name="querypatient" class="action.QueryPatientAction" method="querypatient">
+		<result name="success">/show.jsp</result>
+	</action>
+	
+	<!-- 病人注册 -->
+	<action name="add" class="action.AddPatientAction" method="add">
+		<result name="success">/addsuccess.jsp</result>
+	</action>
+	
+	<!-- 删除病人 -->
+	<action name="deletepatient" class="action.DeletePatientAction" method="deletepatient">
+		<result type="redirectAction" name="success">querypatient</result>
+	</action>
+	
+	<!-- 根据ID（辅助修改）-->
+	<action name="byid" class="action.ByidAction" method="byid">
+		<result name="success">/update.jsp</result>
+	</action>
+	
+	<!-- 修改 -->
+	<action name="update" class="action.UpdatePatientAction" method="update">
+		<result type="redirectAction" name="success">querypatient</result>
+	</action>
+	
+	<!-- 医生登陆 -->
+	<action name="doctorlogin" class="action.DoctorLoginAction" method="doctorlogin" >
+		<result type="redirectAction" name="success">querypatient</result>
+		<result name="error">/error.jsp</result>
+	</action>
+	
+	<!-- 病人登陆 -->
+	<action name="patientlogin" class="action.PatientLoginAction" method="patientlogin">
+		<result name="success">/loginsuccess.jsp</result>
+		<result name="error">/error.jsp</result>
+	</action>
+	
+	<!-- 医生注册 暂时不用-->
+	<action name="doctorregister" class="action.DoctorRegisterAction" method="doctorregister">
+		<result name="success">/index.jsp</result>
+	</action>
+	
+	
+	
+	
+</package>
+
+</struts>    
